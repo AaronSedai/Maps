@@ -1,0 +1,45 @@
+# this program takes a user input message and transforms it into a world map using the characters from the
+# message inputted. The image in lines 6 - 26 is used to create the map. Characters are switched out 
+# according to the user input.
+
+import sys
+
+bitmap = """
+......................................................................
+   **************   *  *** **  *        ******************************
+  ********************* ** ** *     * ***************************** *
+ **     ******************          *****************************
+         **************             **  * **** ** ************* *
+          **********               *******   *************** * *
+           *********              **************************  *
+  *        * **** ***            ************ ********  ** *
+              ****  *           **************   *** ***  *
+                ******           ************    **   **  *
+                *********          ************    *  ** ***
+                  *********         ********         * *** ****
+                  **********         ******  *       **** ** * **
+                  **********        ****** * *          *** *   *
+                    *******          ***** **            * ***   *
+                    ******            **** *            ********
+                   ******             ****              *********
+                   *****               **                *******   *
+                   ****                                    ***    *
+                   ***     *                   *              *
+....................................................................."""
+print('Enter the message to display as a bitmap. For example, "Hello" or "This is a map": ')
+message = input('> ')
+if message == ' ':
+    sys.exit()
+
+# loop over each line in the bitmap
+for line in bitmap.splitlines():
+    # loop over each character in bitmap
+    for i, bit in enumerate(line):
+        if bit == ' ':
+            # print an empty space, since there is an empty space in the bitmap.
+            # essentially, match the message to the spaces on the bitmap.
+            print(' ', end='')
+        else:
+            # print a character from the message
+            print(message[i %len(message)], end='')
+    print()     # new line
